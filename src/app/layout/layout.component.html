@@ -148,7 +148,9 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item"  routerLinkActive="active">
-      <a class="nav-link" routerLink="tables">
+      <a class="nav-link"
+        routerLink="tables"
+        [queryParams]="{ num: 15 }">
         <i class="fas fa-fw fa-table"></i>
         <span>Tables</span></a
       >

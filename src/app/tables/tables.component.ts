@@ -12,7 +12,9 @@ export class TablesComponent implements OnInit {
   data: User[];
   num: number;
 
-  constructor(private route: ActivatedRoute, private httpClient: HttpClient) {}
+  constructor(
+    private route: ActivatedRoute,
+    private httpClient: HttpClient) {}
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe((queryParamMap) => {
