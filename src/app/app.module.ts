@@ -12,6 +12,8 @@ import { ButtonComponent } from './button/button.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ChartsComponent } from './charts/charts.component';
 import { TablesComponent } from './tables/tables.component';
+import { AnimationsComponent } from './animations/animations.component';
+import { ColorsComponent } from './colors/colors.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { TablesComponent } from './tables/tables.component';
     ButtonComponent,
     NotFoundComponent,
     ChartsComponent,
-    TablesComponent
+    TablesComponent,
+    AnimationsComponent,
+    ColorsComponent
   ],
   imports: [
     BrowserModule,

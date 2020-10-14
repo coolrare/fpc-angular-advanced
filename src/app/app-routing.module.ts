@@ -1,3 +1,5 @@
+import { ColorsComponent } from './colors/colors.component';
+import { AnimationsComponent } from './animations/animations.component';
 import { TablesComponent } from './tables/tables.component';
 import { ChartsComponent } from './charts/charts.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -12,7 +14,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: '',
@@ -25,7 +27,7 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'dashboard',
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
       {
         path: 'dashboard',
@@ -37,15 +39,32 @@ const routes: Routes = [
       },
       {
         path: 'button',
-        component: ButtonComponent
+        component: ButtonComponent,
       },
       {
         path: 'charts',
-        component: ChartsComponent
+        component: ChartsComponent,
       },
       {
         path: 'tables',
-        component: TablesComponent
+        component: TablesComponent,
+      },
+      {
+        path: 'utilities',
+        children: [
+          {
+            path: 'animations',
+            component: AnimationsComponent,
+          },
+          {
+            path: 'colors',
+            component: ColorsComponent
+          },
+          {
+            path: 'colors/:type',
+            component: ColorsComponent
+          }
+        ],
       },
       // {
       //   path: '**',
@@ -55,7 +74,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: NotFoundComponent
+    component: NotFoundComponent,
   },
 ];
 
