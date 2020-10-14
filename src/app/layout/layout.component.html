@@ -20,8 +20,8 @@
     <hr class="sidebar-divider my-0" />
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-      <a class="nav-link" href="index.html">
+    <li class="nav-item" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">
+      <a class="nav-link" routerLink="/">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a
       >
@@ -56,8 +56,11 @@
       >
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Custom Components:</h6>
-          <a class="collapse-item" href="buttons.html">Buttons</a>
-          <a class="collapse-item" href="cards.html">Cards</a>
+          <a class="collapse-item" routerLink="button" routerLinkActive="active">Buttons</a>
+          <a class="collapse-item" [routerLink]="['/', 'cards']" routerLinkActive="active">Cards</a>
+          <!-- /user/profile -->
+          <!-- <a class="collapse-item" [routerLink]="['/', 'user', 'profile']">Cards</a> -->
+          <!-- <a class="collapse-item" [routerLink]="['/', 'user', id]">Cards</a> -->
         </div>
       </div>
     </li>
@@ -136,16 +139,16 @@
     </li>
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
-      <a class="nav-link" href="charts.html">
+    <li class="nav-item"  routerLinkActive="actvie">
+      <a class="nav-link" routerLink="charts">
         <i class="fas fa-fw fa-chart-area"></i>
         <span>Charts</span></a
       >
     </li>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
-      <a class="nav-link" href="tables.html">
+    <li class="nav-item"  routerLinkActive="actvie">
+      <a class="nav-link" routerLink="tables">
         <i class="fas fa-fw fa-table"></i>
         <span>Tables</span></a
       >
@@ -457,7 +460,7 @@
 
       <!-- Begin Page Content -->
       <div class="container-fluid">
-
+        <!-- <app-cards [id]="1"></app-cards> -->
         <router-outlet></router-outlet>
 
       </div>

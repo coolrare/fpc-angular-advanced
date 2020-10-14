@@ -1,3 +1,7 @@
+import { TablesComponent } from './tables/tables.component';
+import { ChartsComponent } from './charts/charts.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ButtonComponent } from './button/button.component';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -7,23 +11,52 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
     path: '',
     component: LayoutComponent,
     children: [
+      // {
+      //   path: '',
+      //   component: DashboardComponent
+      // },
       {
         path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
+      },
+      {
+        path: 'dashboard',
         component: DashboardComponent,
       },
       {
         path: 'cards',
         component: CardsComponent,
       },
+      {
+        path: 'button',
+        component: ButtonComponent
+      },
+      {
+        path: 'charts',
+        component: ChartsComponent
+      },
+      {
+        path: 'tables',
+        component: TablesComponent
+      },
+      // {
+      //   path: '**',
+      //   component: NotFoundComponent
+      // }
     ],
   },
   {
-    path: 'login',
-    component: LoginComponent
-  }
+    path: '**',
+    component: NotFoundComponent
+  },
 ];
 
 @NgModule({

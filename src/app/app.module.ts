@@ -8,6 +8,10 @@ import { CardsComponent } from './cards/cards.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './login/login.component';
+import { ButtonComponent } from './button/button.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ChartsComponent } from './charts/charts.component';
+import { TablesComponent } from './tables/tables.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { LoginComponent } from './login/login.component';
     CardsComponent,
     DashboardComponent,
     LayoutComponent,
-    LoginComponent
+    LoginComponent,
+    ButtonComponent,
+    NotFoundComponent,
+    ChartsComponent,
+    TablesComponent
   ],
   imports: [
     BrowserModule,
