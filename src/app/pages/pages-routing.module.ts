@@ -11,7 +11,17 @@ const routes: Routes = [
   {
     path: '',
     component: PagesComponent,
-    children: [{ path: 'blank', component: BlankComponent }],
+    children: [
+      {
+        path: 'blank',
+        component: BlankComponent,
+      },
+      {
+        path: 'demo1',
+        loadChildren: () =>
+          import('./demo1/demo1.module').then((m) => m.Demo1Module),
+      },
+    ],
   },
 ];
 

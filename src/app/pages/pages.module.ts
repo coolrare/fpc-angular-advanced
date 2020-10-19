@@ -6,10 +6,10 @@ import { PagesComponent } from './pages.component';
 import { BlankComponent } from './blank/blank.component';
 
 @NgModule({
-  declarations: [PagesComponent, BlankComponent],
-  imports: [
-    CommonModule,
-    PagesRoutingModule
-  ]
+  declarations: [
+    PagesComponent,
+    BlankComponent
+  ],
+  imports: [CommonModule, PagesRoutingModule],
 })
-export class PagesModule { }
+export class PagesModule {}
