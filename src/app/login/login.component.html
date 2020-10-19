@@ -30,7 +30,11 @@
                       name="password"
                       ngModel
                       #tPassword="ngModel"
-                      type="password" class="form-control form-control-user" id="exampleInputPassword"
+                      type="password"
+                      class="form-control form-control-user"
+                      [class.is-valid]="tPassword.value?.length >= 4"
+                      [class.is-invalid]="tPassword.value?.length < 4"
+                       id="exampleInputPassword"
                       placeholder="Password">
                   </div>
                   <div class="form-group">
