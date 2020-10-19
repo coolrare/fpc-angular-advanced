@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth.guard';
 import { ColorsComponent } from './colors/colors.component';
 import { AnimationsComponent } from './animations/animations.component';
 import { TablesComponent } from './tables/tables.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'pages',
