@@ -20,6 +20,11 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
+      {
+        path: 'pages',
+        loadChildren: () =>
+          import('./pages/pages.module').then((m) => m.PagesModule),
+      },
       // {
       //   path: '',
       //   component: DashboardComponent
@@ -58,12 +63,12 @@ const routes: Routes = [
           },
           {
             path: 'colors',
-            component: ColorsComponent
+            component: ColorsComponent,
           },
           {
             path: 'colors/:type',
-            component: ColorsComponent
-          }
+            component: ColorsComponent,
+          },
         ],
       },
       // {
