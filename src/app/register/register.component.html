@@ -10,38 +10,68 @@
             <div class="text-center">
               <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
             </div>
-            <form class="user" [formGroup]="form" (ngSubmit)="register()" >
+            <form class="user" [formGroup]="form" (ngSubmit)="register()">
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input
-                    formControlName="firstName"
-                    type="text" class="form-control form-control-user" id="exampleFirstName"
-                    placeholder="First Name">
-                    {{ form.get('firstName').value }}
+                  <input formControlName="firstName" [class.is-valid]="firstNameControl.valid"
+                    [class.is-invalid]="firstNameControl.invalid" type="text" class="form-control form-control-user"
+                    id="exampleFirstName" placeholder="First Name">
+                  {{ firstNameControl.value }}
+
+                  <ng-container *ngIf="firstNameControl.dirty && firstNameControl.invalid">
+                    <div *ngIf="firstNameControl.errors.required">
+                      First Name 為必填
+                    </div>
+
+                    <div *ngIf="firstNameControl.errors.minlength">
+                      First Name 長度錯誤
+                    </div>
+                  </ng-container>
+
                 </div>
                 <div class="col-sm-6">
-                  <input
-                    formControlName="lastName"
-                    type="text" class="form-control form-control-user" id="exampleLastName"
-                    placeholder="Last Name">
+                  <input formControlName="lastName" [class.is-valid]="lastNameControl.valid"
+                    [class.is-invalid]="lastNameControl.invalid" type="text" class="form-control form-control-user"
+                    id="exampleLastName" placeholder="Last Name">
+
+                  <ng-container *ngIf="lastNameControl.dirty && lastNameControl.invalid">
+                    <div *ngIf="lastNameControl.errors.required">
+                      Last Name 為必填
+                    </div>
+
+                    <div *ngIf="lastNameControl.errors.minlength">
+                      Last Name 長度錯誤
+                    </div>
+                  </ng-container>
+
                 </div>
               </div>
               <div class="form-group">
-                <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                  placeholder="Email Address">
+                <input type="email"
+                  formControlName="email"
+                  [class.is-valid]="emailControl.valid"
+                  [class.is-invalid]="emailControl.invalid"
+                  class="form-control form-control-user"
+                  id="exampleInputEmail" placeholder="Email Address">
+
+                <ng-container *ngIf="emailControl.dirty && emailControl.invalid">
+                  <div *ngIf="emailControl.errors.required">
+                    Email 為必填
+                  </div>
+
+                  <div *ngIf="emailControl.errors.email">
+                    Email 格式錯誤
+                  </div>
+                </ng-container>
               </div>
               <div class="form-group row" formGroupName="passwordGroup">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input
-                    formControlName="password"
-                    type="text" class="form-control form-control-user" id="exampleInputPassword"
-                    placeholder="Password">
+                  <input formControlName="password" type="text" class="form-control form-control-user"
+                    id="exampleInputPassword" placeholder="Password">
                 </div>
                 <div class="col-sm-6">
-                  <input
-                    formControlName="repeatPassword"
-                    type="password" class="form-control form-control-user" id="exampleRepeatPassword"
-                    placeholder="Repeat Password">
+                  <input formControlName="repeatPassword" type="password" class="form-control form-control-user"
+                    id="exampleRepeatPassword" placeholder="Repeat Password">
                 </div>
               </div>
 
@@ -49,12 +79,9 @@
 
               <div class="form-group row" formArrayName="interests">
                 <div class="col-sm-3" *ngFor="let item of interests.controls; let index = index">
-                  <input
-                    [formControlName]="index"
-                    type="text" class="form-control form-control-user"
-                    id="interests_{{ index }}"
-                   >
-                   <button (click)="removeInterest(index)">-</button>
+                  <input [formControlName]="index" type="text" class="form-control form-control-user"
+                    id="interests_{{ index }}">
+                  <button (click)="removeInterest(index)">-</button>
                   <!-- <input
                     [formControl]="item"
                     type="text" class="form-control form-control-user"
@@ -62,7 +89,7 @@
                   > -->
                 </div>
 
-<!--
+                <!--
                 <div class="col-sm-4">
                   <input
                     formControlName="0"

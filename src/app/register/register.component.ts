@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +13,23 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+  firstNameControl = this.formBuilder.control('Mike', [
+    Validators.required,
+    Validators.minLength(4),
+  ]);
+  lastNameControl = this.formBuilder.control('Huang', [
+    Validators.required,
+    Validators.minLength(4),
+  ]);
+  emailControl = this.formBuilder.control('', [
+    Validators.required,
+    Validators.email
+  ]);
+
   form = this.formBuilder.group({
-    firstName: 'Mike',
-    lastName: 'Huang',
+    firstName: this.firstNameControl,
+    lastName: this.lastNameControl,
+    email: this.emailControl,
     passwordGroup: this.formBuilder.group({
       password: '',
       repeatPassword: '',
@@ -22,7 +42,7 @@ export class RegisterComponent implements OnInit {
   });
 
   // form2 = this.formBuilder.group({
-  //   firstName: this.formBuilder.control('Mike')
+  //   firstName: this.formBuilder.control('Mike', [Validators.required, Validators.minLength(4)])
   // });
 
   // form3 = new FormGroup({
