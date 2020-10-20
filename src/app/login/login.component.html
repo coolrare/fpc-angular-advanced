@@ -15,7 +15,10 @@
                 <div class="text-center">
                   <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                 </div>
-                <form class="user">
+
+                {{ form.value | json }}
+
+                <form class="user" #form="ngForm" (ngSubmit)="formLogin(form.value)">
                   <div class="form-group">
                     <input name="email"
                       ngModel
@@ -25,7 +28,9 @@
                       [class.is-valid]="tEmail.valid"
                       [class.is-invalid]="tEmail.touched && tEmail.dirty && tEmail.invalid"
                       type="email" class="form-control form-control-user"
-                      id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." />
+                      id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..."
+                      (ngModelChange)="emailChange($event)"
+                      />
 
                     <ng-container *ngIf="tEmail.touched && tEmail.dirty && tEmail.invalid">
                       <div *ngIf="tEmail.errors.required">
@@ -71,6 +76,10 @@
                       <label class="custom-control-label" for="customCheck">Remember Me</label>
                     </div>
                   </div>
+                  <button type="submit" class="btn btn-primary btn-user btn-block">
+                    Login (Submit)
+                  </button>
+
                   <button type="button" (click)="login({ email: tEmail.value, password: tPassword.value})"
                     class="btn btn-primary btn-user btn-block">
                     Login
