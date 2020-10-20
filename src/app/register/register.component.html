@@ -72,8 +72,6 @@
                   <input formControlName="repeatPassword" type="password" class="form-control form-control-user"
                     id="exampleRepeatPassword" placeholder="Repeat Password">
                 </div>
-                {{ form.value | json }}
-                {{ form.errors | json }}
                 <div class="col-sm-12" *ngIf="form.dirty && form.invalid && form.errors?.repeatPassword">
                   密碼與驗證密碼必須相同
                 </div>
