@@ -48,11 +48,8 @@
                 </div>
               </div>
               <div class="form-group">
-                <input type="email"
-                  formControlName="email"
-                  [class.is-valid]="emailControl.valid"
-                  [class.is-invalid]="emailControl.invalid"
-                  class="form-control form-control-user"
+                <input type="email" formControlName="email" [class.is-valid]="emailControl.valid"
+                  [class.is-invalid]="emailControl.invalid" class="form-control form-control-user"
                   id="exampleInputEmail" placeholder="Email Address">
 
                 <ng-container *ngIf="emailControl.dirty && emailControl.invalid">
@@ -69,19 +66,22 @@
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <input formControlName="password" type="text" class="form-control form-control-user"
                     id="exampleInputPassword" placeholder="Password">
+
                 </div>
                 <div class="col-sm-6">
                   <input formControlName="repeatPassword" type="password" class="form-control form-control-user"
                     id="exampleRepeatPassword" placeholder="Repeat Password">
                 </div>
+                {{ form.value | json }}
+                {{ form.errors | json }}
+                <div class="col-sm-12" *ngIf="form.dirty && form.invalid && form.errors?.repeatPassword">
+                  密碼與驗證密碼必須相同
+                </div>
               </div>
 
               <div class="form-group">
-                <input
-                  formControlName="creditCard"
-                  [class.is-valid]="creditCardControl.valid"
-                  [class.is-invalid]="creditCardControl.invalid"
-                  class="form-control form-control-user"
+                <input formControlName="creditCard" [class.is-valid]="creditCardControl.valid"
+                  [class.is-invalid]="creditCardControl.invalid" class="form-control form-control-user"
                   placeholder="Credit Card Number" />
                 <ng-container *ngIf="creditCardControl.dirty && creditCardControl.invalid">
                   <div *ngIf="creditCardControl.errors.creditCard">

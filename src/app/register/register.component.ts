@@ -7,13 +7,10 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-
-const creditCardValidator = (control: AbstractControl) => {
-  if (control.value && control.value.length === 19) {
-    return null;
-  }
-  return { creditCard: 'format error' };
-};
+import {
+  creditCardValidator,
+  repeatPasswordValidator,
+} from '../custom-validators';
 
 @Component({
   selector: 'app-register',
@@ -69,19 +66,27 @@ export class RegisterComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
+    // 替 FormGroup 設定 validators
+    this.form.setValidators([
+      repeatPasswordValidator(
+        'passwordGroup.password',
+        'passwordGroup.repeatPassword'
+      ),
+    ]);
+
     // api ....
-    let data = {
+    const data = {
       firstName: 'Mike 2',
       lastName: 'Huang 2',
       email: 'test@demo.com',
       interests: ['A', 'B', 'C'],
       creditCard: '',
+      passwordGroup = {
+        password: '',
+        repeatPassword: '',
+      }
     };
 
-    data['passwordGroup'] = {
-      password: '',
-      repeatPassword: '',
-    };
     this.form.setValue(data);
     this.form.reset({ lastName: '123' });
     this.form.patchValue({ firstName: 'ABC', AAAA: 'test' });
