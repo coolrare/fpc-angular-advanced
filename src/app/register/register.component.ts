@@ -43,4 +43,12 @@ export class RegisterComponent implements OnInit {
   register() {
     console.log(this.form.value);
   }
+
+  addInterest() {
+    this.interests.push(this.formBuilder.control(''));
+  }
+
+  removeInterest(index: number) {
+    this.interests.removeAt(index);
+  }
 }

@@ -45,13 +45,16 @@
                 </div>
               </div>
 
+              <button (click)="addInterest()">+</button>
+
               <div class="form-group row" formArrayName="interests">
-                <div class="col-sm-4" *ngFor="let item of interests.controls; let index = index">
+                <div class="col-sm-3" *ngFor="let item of interests.controls; let index = index">
                   <input
                     [formControlName]="index"
                     type="text" class="form-control form-control-user"
                     id="interests_{{ index }}"
                    >
+                   <button (click)="removeInterest(index)">-</button>
                   <!-- <input
                     [formControl]="item"
                     type="text" class="form-control form-control-user"
