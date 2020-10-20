@@ -33,3 +33,11 @@
 ## 使用原生的 HTML 驗證
 
 - https://angular.io/api/forms/NgForm#native-dom-validation-ui
+
+## 建立表單元件
+
+- [[Angular 大師之路] 自訂表單控制項](https://wellwind.idv.tw/blog/2018/10/23/mastering-angular-08-customize-form-control/)
+
+## 動態產生表單
+
+- [Building dynamic forms](https://angular.io/guide/dynamic-form)
