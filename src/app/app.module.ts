@@ -17,6 +17,7 @@ import { AnimationsComponent } from './animations/animations.component';
 import { ColorsComponent } from './colors/colors.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
+import { CreditCardValidatorDirective } from './credit-card-validator.directive';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { RegisterComponent } from './register/register.component';
     TablesComponent,
     AnimationsComponent,
     ColorsComponent,
-    RegisterComponent
+    RegisterComponent,
+    CreditCardValidatorDirective
   ],
   imports: [
     BrowserModule,
