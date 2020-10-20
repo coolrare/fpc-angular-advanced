@@ -25,3 +25,11 @@
 ## JavaScript 模組化基本觀念
 
 - [JavaScript 模組系統](https://eyesofkids.gitbooks.io/javascript-start-from-es6/content/part4/module_system.html)
+
+## 表單在 blur 時才更新
+
+- https://angular.io/api/forms/NgForm#setting-the-update-options
+
+## 使用原生的 HTML 驗證
+
+- https://angular.io/api/forms/NgForm#native-dom-validation-ui
