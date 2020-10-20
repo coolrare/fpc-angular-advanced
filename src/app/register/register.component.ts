@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 
 const creditCardValidator = (control: AbstractControl) => {
-  if (control.value.length === 19) {
+  if (control.value && control.value.length === 19) {
     return null;
   }
   return { creditCard: 'format error' };
@@ -75,13 +75,14 @@ export class RegisterComponent implements OnInit {
       lastName: 'Huang 2',
       email: 'test@demo.com',
       interests: ['A', 'B', 'C'],
+      creditCard: '',
     };
 
-    (data['passwordGroup'] = {
+    data['passwordGroup'] = {
       password: '',
       repeatPassword: '',
-    }),
-      this.form.setValue(data);
+    };
+    this.form.setValue(data);
     this.form.reset({ lastName: '123' });
     this.form.patchValue({ firstName: 'ABC', AAAA: 'test' });
     this.form.get('email').reset('aaa@bbb.com');
