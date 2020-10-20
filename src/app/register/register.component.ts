@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +14,11 @@ export class RegisterComponent implements OnInit {
       password: '',
       repeatPassword: '',
     }),
+    interests: this.formBuilder.array([
+      this.formBuilder.control('HTML'),
+      this.formBuilder.control('JavaScript'),
+      this.formBuilder.control('Angular'),
+    ]),
   });
 
   // form2 = this.formBuilder.group({
@@ -21,8 +26,15 @@ export class RegisterComponent implements OnInit {
   // });
 
   // form3 = new FormGroup({
-  //   firstName: new FormControl()
+  //   firstName: new FormControl(),
+  //   interests: new FormArray([
+  //     new FormControl('HTML')
+  //   ])
   // });
+
+  get interests() {
+    return this.form.get('interests') as FormArray;
+  }
 
   constructor(private formBuilder: FormBuilder) {}
 

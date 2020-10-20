@@ -34,7 +34,7 @@
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <input
                     formControlName="password"
-                    type="password" class="form-control form-control-user" id="exampleInputPassword"
+                    type="text" class="form-control form-control-user" id="exampleInputPassword"
                     placeholder="Password">
                 </div>
                 <div class="col-sm-6">
@@ -44,6 +44,44 @@
                     placeholder="Repeat Password">
                 </div>
               </div>
+
+              <div class="form-group row" formArrayName="interests">
+                <div class="col-sm-4" *ngFor="let item of interests.controls; let index = index">
+                  <input
+                    [formControlName]="index"
+                    type="text" class="form-control form-control-user"
+                    id="interests_{{ index }}"
+                   >
+                  <!-- <input
+                    [formControl]="item"
+                    type="text" class="form-control form-control-user"
+                    id="interests_{{ index }}"
+                  > -->
+                </div>
+
+<!--
+                <div class="col-sm-4">
+                  <input
+                    formControlName="0"
+                    type="text" class="form-control form-control-user" id="exampleInputPassword"
+                   >
+                </div>
+                <div class="col-sm-4">
+                  <input
+                  formControlName="1"
+
+                    type="text" class="form-control form-control-user" id="exampleRepeatPassword"
+                   >
+                </div>
+                <div class="col-sm-4">
+                  <input
+                  formControlName="2"
+
+                    type="text" class="form-control form-control-user" id="exampleRepeatPassword"
+                    >
+                </div> -->
+              </div>
+
               <button type="submit" class="btn btn-primary btn-user btn-block">
                 Register Account
               </button>
