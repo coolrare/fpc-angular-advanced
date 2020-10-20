@@ -1,3 +1,4 @@
+import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './auth.guard';
 import { ColorsComponent } from './colors/colors.component';
 import { AnimationsComponent } from './animations/animations.component';
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   },
   {
     path: '',

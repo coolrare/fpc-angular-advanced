@@ -1,4 +1,4 @@
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -16,6 +16,7 @@ import { TablesComponent } from './tables/tables.component';
 import { AnimationsComponent } from './animations/animations.component';
 import { ColorsComponent } from './colors/colors.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +30,15 @@ import { HttpClientModule } from '@angular/common/http';
     ChartsComponent,
     TablesComponent,
     AnimationsComponent,
-    ColorsComponent
+    ColorsComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
