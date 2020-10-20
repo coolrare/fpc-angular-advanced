@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { NgForm, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,13 +8,13 @@ import { NgModel } from '@angular/forms';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit, AfterViewInit {
+  @ViewChild(NgForm) form: NgForm;
   @ViewChild('tEmail') emailControl: NgModel;
 
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-
   }
 
   ngAfterViewInit() {

@@ -1,11 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  AbstractControl,
   FormArray,
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
+
+const creditCardValidator = (control: AbstractControl) => {
+  if (control.value.length === 19) {
+    return null;
+  }
+  return { creditCard: 'format error' };
+};
 
 @Component({
   selector: 'app-register',
@@ -23,8 +31,9 @@ export class RegisterComponent implements OnInit {
   ]);
   emailControl = this.formBuilder.control('', [
     Validators.required,
-    Validators.email
+    Validators.email,
   ]);
+  creditCardControl = this.formBuilder.control('', [creditCardValidator]);
 
   form = this.formBuilder.group({
     firstName: this.firstNameControl,
@@ -58,7 +67,26 @@ export class RegisterComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // api ....
+    let data = {
+      firstName: 'Mike 2',
+      lastName: 'Huang 2',
+      email: 'test@demo.com',
+      interests: ['A', 'B', 'C'],
+    };
+
+    (data['passwordGroup'] = {
+      password: '',
+      repeatPassword: '',
+    }),
+      this.form.setValue(data);
+    this.form.reset({ lastName: '123' });
+    this.form.patchValue({ firstName: 'ABC', AAAA: 'test' });
+    this.form.get('email').reset('aaa@bbb.com');
+    const repeatPassword = this.form.get('passwordGroup.repeatPassword');
+    // const repeatPassword = this.form.get('passwordGroup').get('repeatPassword');
+  }
 
   register() {
     console.log(this.form.value);
