@@ -23,11 +23,11 @@
                       required
                       email
                       [class.is-valid]="tEmail.valid"
-                      [class.is-invalid]="tEmail.invalid"
+                      [class.is-invalid]="tEmail.touched && tEmail.dirty && tEmail.invalid"
                       type="email" class="form-control form-control-user"
                       id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." />
 
-                    <ng-container *ngIf="tEmail.invalid">
+                    <ng-container *ngIf="tEmail.touched && tEmail.dirty && tEmail.invalid">
                       <div *ngIf="tEmail.errors.required">
                         Email 為必填
                       </div>
