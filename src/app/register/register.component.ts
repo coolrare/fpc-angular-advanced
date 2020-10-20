@@ -39,6 +39,7 @@ export class RegisterComponent implements OnInit {
     firstName: this.firstNameControl,
     lastName: this.lastNameControl,
     email: this.emailControl,
+    creditCard: this.creditCardControl,
     passwordGroup: this.formBuilder.group({
       password: '',
       repeatPassword: '',
