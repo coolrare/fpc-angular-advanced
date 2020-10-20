@@ -11,7 +11,6 @@ export const repeatPasswordValidator = (
   compareFieldA: string,
   compareFieldB: string
 ) => (control: AbstractControl) => {
-  console.log(compareFieldA, compareFieldB)
   // 這裡的 control 是 formGroup
   if (control.get(compareFieldA).value !== control.get(compareFieldB).value) {
     return { repeatPassword: true };

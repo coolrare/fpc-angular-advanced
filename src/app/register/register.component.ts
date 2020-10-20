@@ -81,7 +81,7 @@ export class RegisterComponent implements OnInit {
       email: 'test@demo.com',
       interests: ['A', 'B', 'C'],
       creditCard: '',
-      passwordGroup = {
+      passwordGroup: {
         password: '',
         repeatPassword: '',
       }
