@@ -17,25 +17,53 @@
                 </div>
                 <form class="user">
                   <div class="form-group">
-                    <input
-                      name="email"
+                    <input name="email"
                       ngModel
                       #tEmail="ngModel"
-                      type="email" class="form-control form-control-user" id="exampleInputEmail"
-                      aria-describedby="emailHelp"
-                      placeholder="Enter Email Address..." />
-                  </div>
+                      required
+                      email
+                      [class.is-valid]="tEmail.valid"
+                      [class.is-invalid]="tEmail.invalid"
+                      type="email" class="form-control form-control-user"
+                      id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." />
+
+                    <ng-container *ngIf="tEmail.invalid">
+                      <div *ngIf="tEmail.errors.required">
+                        Email 為必填
+                      </div>
+
+                      <div *ngIf="tEmail.errors.email">
+                        Email 格式不正確
+                      </div>
+                    </ng-container>
+
+
+                    </div>
                   <div class="form-group">
-                    <input
-                      name="password"
-                      ngModel
-                      #tPassword="ngModel"
-                      type="password"
+                    <input name="password" ngModel #tPassword="ngModel" type="password"
                       class="form-control form-control-user"
-                      [class.is-valid]="tPassword.value?.length >= 4"
-                      [class.is-invalid]="tPassword.value?.length < 4"
-                       id="exampleInputPassword"
+                      required
+                      minlength="4"
+                      [class.is-valid]="tPassword.valid"
+                      [class.is-invalid]="tPassword.invalid"
+                      id="exampleInputPassword"
                       placeholder="Password">
+
+                    <!-- {{ tPassword.errors | json }} -->
+                    <ng-container *ngIf="tPassword.invalid">
+                      <div *ngIf="tPassword.errors.required">
+                        密碼為必填
+                      </div>
+
+                      <div *ngIf="tPassword.errors.minlength">
+                        文字長度不符:
+                        (
+                        {{ tPassword.errors?.minlength.actualLength }}
+                        /
+                        {{ tPassword.errors?.minlength.requiredLength }}
+                        )
+                      </div>
+                    </ng-container>
                   </div>
                   <div class="form-group">
                     <div class="custom-control custom-checkbox small">
@@ -43,8 +71,7 @@
                       <label class="custom-control-label" for="customCheck">Remember Me</label>
                     </div>
                   </div>
-                  <button type="button"
-                    (click)="login({ email: tEmail.value, password: tPassword.value})"
+                  <button type="button" (click)="login({ email: tEmail.value, password: tPassword.value})"
                     class="btn btn-primary btn-user btn-block">
                     Login
                   </button>
