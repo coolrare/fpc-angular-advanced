@@ -16,8 +16,18 @@
                   <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                 </div>
 
-                {{ form.value | json }}
-                {{ form.errors | json }}
+                <div>
+                  form.value:
+                  <pre>{{ form.value | json }}</pre>
+                </div>
+                <div>
+                  form.form.getRowValue():
+                  <pre>{{ form.form.getRawValue() | json }}</pre>
+                </div>
+                <div>
+                  form.errors:
+                  <pre>{{ form.errors | json }}</pre>
+                </div>
                 <div>
                   submitted: {{ form.submitted }}
                 </div>
@@ -26,10 +36,8 @@
                   [ngFormOptions]="{ updateOn: 'blur' }"
                   ngNativeValidate
                 ></form> -->
-                <form class="user"
-                 #form="ngForm"
 
-                  (ngSubmit)="formLogin(form.value)">
+                <form class="user" #form="ngForm" (ngSubmit)="formLogin(form.value)">
                   <div class="form-group">
                     <input name="email"
                       ngModel
@@ -37,11 +45,9 @@
                       required
                       email
                       [class.is-valid]="tEmail.valid"
-                      [class.is-invalid]="tEmail.touched && tEmail.dirty && tEmail.invalid"
-                      type="email" class="form-control form-control-user"
-                      id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..."
-                      (ngModelChange)="emailChange($event)"
-                      />
+                      [class.is-invalid]="tEmail.touched && tEmail.dirty && tEmail.invalid" type="email"
+                      class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp"
+                      placeholder="Enter Email Address..." (ngModelChange)="emailChange($event)" />
 
                     <ng-container *ngIf="tEmail.touched && tEmail.dirty && tEmail.invalid">
                       <div *ngIf="tEmail.errors.required">
@@ -54,16 +60,11 @@
                     </ng-container>
 
 
-                    </div>
+                  </div>
                   <div class="form-group">
                     <input name="password" ngModel #tPassword="ngModel" type="password"
-                      class="form-control form-control-user"
-                      required
-                      minlength="4"
-                      [class.is-valid]="tPassword.valid"
-                      [class.is-invalid]="tPassword.invalid"
-                      id="exampleInputPassword"
-                      placeholder="Password">
+                      class="form-control form-control-user" required minlength="4" [class.is-valid]="tPassword.valid"
+                      [class.is-invalid]="tPassword.invalid" id="exampleInputPassword" placeholder="Password">
 
                     <!-- {{ tPassword.errors | json }} -->
                     <ng-container *ngIf="tPassword.invalid">
@@ -81,6 +82,18 @@
                       </div>
                     </ng-container>
                   </div>
+
+                  <div class="form-group" ngModelGroup="profile" #profileGroup="ngModelGroup">
+                    <input name="bio"
+                      ngModel
+                      class="form-control  form-control-user" />
+                  </div>
+
+                  <div>
+                    profileGroup.value
+                    <pre>{{ profileGroup.value | json }}</pre>
+                  </div>
+
                   <div class="form-group">
                     <div class="custom-control custom-checkbox small">
                       <input type="checkbox" class="custom-control-input" id="customCheck">
