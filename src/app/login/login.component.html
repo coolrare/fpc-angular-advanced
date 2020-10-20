@@ -17,8 +17,19 @@
                 </div>
 
                 {{ form.value | json }}
+                {{ form.errors | json }}
+                <div>
+                  submitted: {{ form.submitted }}
+                </div>
 
-                <form class="user" #form="ngForm" (ngSubmit)="formLogin(form.value)">
+                <!-- <form
+                  [ngFormOptions]="{ updateOn: 'blur' }"
+                  ngNativeValidate
+                ></form> -->
+                <form class="user"
+                 #form="ngForm"
+
+                  (ngSubmit)="formLogin(form.value)">
                   <div class="form-group">
                     <input name="email"
                       ngModel

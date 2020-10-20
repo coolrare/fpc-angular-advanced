@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.emailControl.valueChanges.subscribe((data) => {
+      // this.accountService.checkEmailExist(data).subscribe()
       console.log('email value changes', data);
     });
 
